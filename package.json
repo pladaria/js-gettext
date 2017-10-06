@@ -1,6 +1,6 @@
 {
     "name": "js-gettext",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "gettext alternative for js",
     "main": "./src/index.js",
     "author": "Pedro Ladaria <pedro.ladaria@gmail.com>",
