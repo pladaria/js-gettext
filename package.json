@@ -1,5 +1,5 @@
 {
-  "name": "gettext",
+  "name": "js-gettext",
   "version": "1.0.0",
   "description": "gettext alternative for js",
   "main": "index.js",
