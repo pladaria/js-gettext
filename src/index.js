@@ -6,12 +6,15 @@ const DEFAULT_IGNORE = ['**/node_modules/**', '**/__tests__/**.js', '**/__storie
 
 const collect = (value, acc = []) => acc.push(value) && acc;
 
-const parseFormatterOptions = options =>
-    options.split(/\s*;\s*/).reduce((acc, pair) => {
-        const [key, value] = pair.trim().split(/\s*=\s*/);
-        acc[key] = value;
-        return acc;
-    });
+const parseFormatterOptions = (value = '') =>
+    value
+        .trim()
+        .split(/\s*;\s*/)
+        .reduce((acc, pair) => {
+            const [key, value] = pair.trim().split(/\s*=\s*/);
+            acc[key] = value;
+            return acc;
+        }, {});
 
 let input, output;
 
@@ -22,8 +25,13 @@ argv
     .option('-s, --singular <string>', 'Singular translate function', String, 'I18N.translate')
     .option('-p, --plural <string>', 'Plural translate function', String, 'I18N.translatePlural')
     .option('-i, --ignore <glob>', 'Ignore pattern', collect)
+    .option(
+        '-o, --formatterOptions <key1=value1;key2=value2>',
+        'Formatter options',
+        parseFormatterOptions,
+        {}
+    )
     .option('-v, --verbose', 'Verbose mode', true)
-    .option('-o, --options', 'Formatter options', parseFormatterOptions, {})
     .allowUnknownOption()
     .action((a, b) => {
         input = a;
@@ -44,6 +52,8 @@ const tokens = extractTokens({
     verbose: !!argv.verbose,
 });
 
+console.log(argv.formatterOptions);
+
 const formatter = require('./formatters/' + argv.format);
 
-writeFileSync(output, formatter(tokens));
+writeFileSync(output, formatter(tokens, argv.formatterOptions));
