@@ -53,8 +53,6 @@ const tokens = extractTokens({
     verbose: !!argv.verbose,
 });
 
-console.log(argv.formatterOptions);
-
 const formatter = require('./formatters/' + argv.format);
 
 writeFileSync(output, formatter(tokens, argv.formatterOptions));
