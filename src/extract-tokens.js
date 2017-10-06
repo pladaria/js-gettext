@@ -1,8 +1,7 @@
-const {readdirSync, readFileSync, statSync} = require('fs');
+const {readFileSync, statSync} = require('fs');
 const glob = require('glob');
 const {buildFunctionCallRegExp} = require('./regular-expressions');
 const readParameters = require('./read-parameters');
-const gettextFormatter = require('./formatters/gettext');
 
 const addToken = (tokens, filename, line, token, tokenPlural = '') => {
     const key = token;
@@ -33,7 +32,7 @@ const extractTokens = (tokens, text, filename, reSingular, rePlural) => {
         const c = text[i];
         if (c === '\n') {
             line++;
-        } else if ((match = text.substr(i).match(RE_SINGULAR))) {
+        } else if ((match = text.substr(i).match(reSingular))) {
             i += match[0].length;
             const {params, length} = readParameters(text.substr(i), 1);
             if (length) {
@@ -42,7 +41,7 @@ const extractTokens = (tokens, text, filename, reSingular, rePlural) => {
             } else {
                 console.error(`Error reading singular token: ${filename}:${line}`);
             }
-        } else if ((match = text.substr(i).match(RE_PLURAL))) {
+        } else if ((match = text.substr(i).match(rePlural))) {
             i += match[0].length;
             const {params, length} = readParameters(text.substr(i), 2);
             if (length) {
