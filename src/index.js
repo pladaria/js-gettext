@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const {writeFileSync} = require('fs');
 const argv = require('commander');
 const extractTokens = require('./extract-tokens');
