@@ -1,0 +1,17 @@
+{
+  "name": "gettext",
+  "version": "1.0.0",
+  "description": "gettext alternative for js",
+  "main": "index.js",
+  "author": "Pedro Ladaria <pedro.ladaria@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "ava tests"
+  },
+  "dependencies": {
+    "glob": "^7.1.2"
+  },
+  "devDependencies": {
+    "ava": "^0.22.0"
+  }
+}
