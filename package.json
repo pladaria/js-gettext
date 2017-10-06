@@ -1,37 +1,57 @@
 {
-  "name": "js-gettext",
-  "version": "1.0.1",
-  "description": "gettext alternative for js",
-  "main": "index.js",
-  "author": "Pedro Ladaria <pedro.ladaria@gmail.com>",
-  "license": "MIT",
-  "scripts": {
-    "test": "ava tests"
-  },
-  "dependencies": {
-    "glob": "^7.1.2"
-  },
-  "devDependencies": {
-    "ava": "^0.22.0"
-  },
-  "directories": {
-    "test": "tests"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pladaria/js-gettext.git"
-  },
-  "keywords": [
-    "gettext",
-    "token",
-    "extractor",
-    "i18n",
-    "translations",
-    "internationalization",
-    "translate"
-  ],
-  "bugs": {
-    "url": "https://github.com/pladaria/js-gettext/issues"
-  },
-  "homepage": "https://github.com/pladaria/js-gettext#readme"
+    "name": "js-gettext",
+    "version": "1.0.1",
+    "description": "gettext alternative for js",
+    "main": "index.js",
+    "author": "Pedro Ladaria <pedro.ladaria@gmail.com>",
+    "license": "MIT",
+    "scripts": {
+        "test": "ava tests",
+        "precommit": "lint-staged"
+    },
+    "bin": {
+        "gettext": "./index.js"
+    },
+    "dependencies": {
+        "glob": "^7.1.2",
+        "minimist": "^1.2.0"
+    },
+    "devDependencies": {
+        "ava": "^0.22.0",
+        "husky": "^0.14.3",
+        "prettier": "^1.7.4"
+    },
+    "directories": {
+        "test": "tests"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/pladaria/js-gettext.git"
+    },
+    "keywords": [
+        "gettext",
+        "token",
+        "extractor",
+        "i18n",
+        "translations",
+        "internationalization",
+        "translate"
+    ],
+    "bugs": {
+        "url": "https://github.com/pladaria/js-gettext/issues"
+    },
+    "homepage": "https://github.com/pladaria/js-gettext#readme",
+    "prettier": {
+        "printWidth": 100,
+        "tabWidth": 4,
+        "singleQuote": true,
+        "trailingComma": "es5",
+        "bracketSpacing": false
+    },
+    "lint-staged": {
+        "gitDir": "./",
+        "linters": {
+            "*.js": ["prettier --write", "git add"]
+        }
+    }
 }

@@ -1,12 +1,15 @@
 /**
  * gettext formatter
  */
-module.exports = (tokens, {
-    packageName = 'Example',
-    packageVersion = 'x.x.x',
-    msgidBugsAddress = 'bugs@example.org',
-    copyrightHolder = 'Company',
-} = {}) => {
+module.exports = (
+    tokens,
+    {
+        packageName = 'Example',
+        packageVersion = 'x.x.x',
+        msgidBugsAddress = 'bugs@example.org',
+        copyrightHolder = 'Company',
+    } = {}
+) => {
     const lines = [];
 
     lines.push('# SOME DESCRIPTIVE TITLE.');
@@ -31,7 +34,7 @@ module.exports = (tokens, {
     lines.push('');
 
     Object.values(tokens)
-        .sort(({token: t1}, {token: t2}) => t1 < t2 ? -1 : 1)
+        .sort(({token: t1}, {token: t2}) => (t1 < t2 ? -1 : 1))
         .forEach(({token, plural, positions}) => {
             positions.sort().forEach(position => {
                 lines.push(`#: ${position}`);

@@ -1,3 +1,5 @@
+const argv = require('minimist').minimist(process.argv);
+
 const extractTokens = require('./src/extract-tokens');
 
 const ignore = ['**/__tests__/**.js', '**/__stories__/**.js'];

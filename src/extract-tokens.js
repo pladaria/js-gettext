@@ -11,7 +11,7 @@ const addToken = (tokens, filename, line, token, tokenPlural = '') => {
             token: token,
             plural: tokenPlural,
             positions: [`${filename}:${line}`],
-        }
+        };
     } else {
         tokens[key].positions.push(`${filename}:${line}`);
         const currentPlural = tokens[key].tokenPlural;
@@ -22,7 +22,7 @@ const addToken = (tokens, filename, line, token, tokenPlural = '') => {
                 throw Error(`token ${token} has many plurals: ${currentPlural}, ${tokenPlural}`);
             }
         }
-    };
+    }
     return tokens;
 };
 
@@ -33,7 +33,7 @@ const extractTokens = (tokens, text, filename, reSingular, rePlural) => {
         const c = text[i];
         if (c === '\n') {
             line++;
-        } else if (match = text.substr(i).match(RE_SINGULAR)) {
+        } else if ((match = text.substr(i).match(RE_SINGULAR))) {
             i += match[0].length;
             const {params, length} = readParameters(text.substr(i), 1);
             if (length) {
@@ -42,7 +42,7 @@ const extractTokens = (tokens, text, filename, reSingular, rePlural) => {
             } else {
                 console.error(`Error reading singular token: ${filename}:${line}`);
             }
-        } else if (match = text.substr(i).match(RE_PLURAL)) {
+        } else if ((match = text.substr(i).match(RE_PLURAL))) {
             i += match[0].length;
             const {params, length} = readParameters(text.substr(i), 2);
             if (length) {
@@ -57,7 +57,7 @@ const extractTokens = (tokens, text, filename, reSingular, rePlural) => {
 
 module.exports = ({path, ignore, singular, plural}) => {
     const files = glob.sync(path, {ignore});
-    const tokens = {}
+    const tokens = {};
     const reSingular = buildFunctionCallRegExp(singular);
     const rePlural = buildFunctionCallRegExp(plural);
 
