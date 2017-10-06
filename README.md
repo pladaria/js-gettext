@@ -1,7 +1,13 @@
-# Title
+# js-gettext
+
+Text extraction from JS sources (js, ts, jsx)
+
+## WIP
+
+:warning: Not production ready!
 
 ## Features
 
-- Fast
-- Configurable
-- Gettext compatible output
+* :zap: Fast!
+* :sparkles: Configurable!
+* :memo: Outputs gettext compatible `pot` files or `json`
