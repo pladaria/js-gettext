@@ -54,13 +54,16 @@ const extractTokens = (tokens, text, filename, reSingular, rePlural) => {
     }
 };
 
-module.exports = ({path, ignore, singular, plural}) => {
-    const files = glob.sync(path, {ignore});
+module.exports = ({input, ignore, singular, plural, verbose}) => {
+    const files = glob.sync(input, {ignore});
     const tokens = {};
     const reSingular = buildFunctionCallRegExp(singular);
     const rePlural = buildFunctionCallRegExp(plural);
 
     files.forEach(f => {
+        if (verbose) {
+            console.error(f);
+        }
         const stat = statSync(f);
         if (stat.isFile()) {
             const text = readFileSync(f).toString('utf8');

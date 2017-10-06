@@ -2,7 +2,7 @@
     "name": "js-gettext",
     "version": "1.0.1",
     "description": "gettext alternative for js",
-    "main": "index.js",
+    "main": "./src/index.js",
     "author": "Pedro Ladaria <pedro.ladaria@gmail.com>",
     "license": "MIT",
     "scripts": {
@@ -10,7 +10,7 @@
         "precommit": "lint-staged"
     },
     "bin": {
-        "gettext": "./index.js"
+        "js-gettext": "./src/index.js"
     },
     "dependencies": {
         "commander": "^2.11.0",

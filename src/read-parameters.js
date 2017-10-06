@@ -56,6 +56,7 @@ module.exports = (text, limit, debug = false) => {
                 if (state === 'none') {
                     return {params: [], length: 0};
                 }
+                break;
             default:
                 if (state === 'string') {
                     param += c;
