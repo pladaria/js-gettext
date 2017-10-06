@@ -13,5 +13,25 @@
   },
   "devDependencies": {
     "ava": "^0.22.0"
-  }
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pladaria/js-gettext.git"
+  },
+  "keywords": [
+    "gettext",
+    "token",
+    "extractor",
+    "i18n",
+    "translations",
+    "internationalization",
+    "translate"
+  ],
+  "bugs": {
+    "url": "https://github.com/pladaria/js-gettext/issues"
+  },
+  "homepage": "https://github.com/pladaria/js-gettext#readme"
 }
