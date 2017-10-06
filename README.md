@@ -7,9 +7,11 @@ Text extraction from JS sources (js, ts, jsx)
 * Super fast!
 * Outputs gettext compatible `pot` files or `json`
 
-## Usage
+## Install
 
     npm i --global js-gettext
+
+## Usage
 
 ```
   Usage: js-gettext [options] <input> <output>
