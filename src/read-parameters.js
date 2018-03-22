@@ -2,7 +2,7 @@
  * Simple state machine to read up to `limit` string parameters
  *
  * @param {string} text
- * @param {sumber} limit
+ * @param {number} limit
  */
 module.exports = (text, limit, debug = false) => {
     const params = [];
@@ -38,7 +38,7 @@ module.exports = (text, limit, debug = false) => {
                         quote = '';
                         state = 'none';
                         param += c;
-                        params.push(eval(param));
+                        params.push(eval(param.replace(/\n/g, '\\n')));
                         if (params.length >= limit) {
                             return {params, length: i};
                         }

@@ -16,6 +16,7 @@ test('buildFunctionCallRegExp', t => {
         ['foo.bar', 'foo\n.bar\n("token");', 10],
         ['foo.bar', 'foo\n.\nbar\n(\n    "token");', 16],
         ['foo.bar.baz', 'foo\n.\nbar\n.\n\t      baz    (\n    "token");', 32],
+        ['foo', "foo('%(comment1)line1\n%(comment2)line3\n%(comment2)line3\n')", 4],
     ];
 
     cases.forEach(([functionName, text, matchLength], i) => {

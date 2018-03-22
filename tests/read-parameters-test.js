@@ -24,3 +24,13 @@ test('escaped quotes', t => {
     };
     t.deepEqual(result, expected);
 });
+
+test('token with newlines', t => {
+    const input = `'%(comment1)line1\n%(comment2)line2', 123)`;
+    const result = readParameters(input, 1);
+    const expected = {
+        params: ['%(comment1)line1\n%(comment2)line2'],
+        length: 35,
+    };
+    t.deepEqual(result, expected);
+});
