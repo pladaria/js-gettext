@@ -51,12 +51,8 @@
         "bracketSpacing": false
     },
     "lint-staged": {
-        "gitDir": "./",
         "linters": {
-            "*.js": [
-                "prettier --write",
-                "git add"
-            ]
+            "*.js": ["prettier --write", "git add"]
         }
     }
 }
