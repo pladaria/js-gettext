@@ -1,9 +1,7 @@
-const test = require('ava');
-const {buildFunctionCallRegExp} = require('../src/regular-expressions');
+const {buildFunctionCallRegExp} = require('../regular-expressions');
 
-test('buildFunctionCallRegExp', t => {
+test('buildFunctionCallRegExp', () => {
     const cases = [
-        // [functionName, text, matchLength]
         ['foo', 'foo("token");', 4],
         ['foo', ' foo("token");', 0],
         ['foo', 'xfoo("token");', 0],
@@ -19,16 +17,15 @@ test('buildFunctionCallRegExp', t => {
         ['foo', "foo('%(comment1)line1\n%(comment2)line3\n%(comment2)line3\n')", 4],
     ];
 
-    cases.forEach(([functionName, text, matchLength], i) => {
+    cases.forEach(([functionName, text, matchLength]) => {
         const re = buildFunctionCallRegExp(functionName);
         const match = text.match(re);
-        const description = `case #${i}, ${functionName}, ${text}`;
         if (matchLength) {
-            t.not(match, null, description);
-            t.is(match.length, 1, description);
-            t.is(match[0].length, matchLength, description);
+            expect(match).not.toBe(null);
+            expect(match).toHaveLength(1);
+            expect(match[0]).toHaveLength(matchLength);
         } else {
-            t.is(match, null, description);
+            expect(match).toBe(null);
         }
     });
 });

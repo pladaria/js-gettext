@@ -1,36 +1,35 @@
-const test = require('ava');
-const readParameters = require('../src/read-parameters');
+const readParameters = require('../read-parameters');
 
-test('happy case - read one parameter', t => {
+test('happy case - read one parameter', () => {
     const input = `'foo', "bar", 123`;
     const result = readParameters(input, 1);
     const expected = {params: [`foo`], length: 5};
-    t.deepEqual(result, expected);
+    expect(result).toStrictEqual(expected);
 });
 
-test('happy case - read two parameters', t => {
+test('happy case - read two parameters', () => {
     const input = `'foo', "bar", 123`;
     const result = readParameters(input, 2);
     const expected = {params: [`foo`, `bar`], length: 12};
-    t.deepEqual(result, expected);
+    expect(result).toStrictEqual(expected);
 });
 
-test('escaped quotes', t => {
+test('escaped quotes', () => {
     const input = `'foo\\\\\\'"',\n"bar\\"'", 123`;
     const result = readParameters(input, 2);
     const expected = {
         params: [`foo\\'"`, `bar"'`],
         length: 20,
     };
-    t.deepEqual(result, expected);
+    expect(result).toStrictEqual(expected);
 });
 
-test('token with newlines', t => {
+test('token with newlines', () => {
     const input = `'%(comment1)line1\n%(comment2)line2', 123)`;
     const result = readParameters(input, 1);
     const expected = {
         params: ['%(comment1)line1\n%(comment2)line2'],
         length: 35,
     };
-    t.deepEqual(result, expected);
+    expect(result).toStrictEqual(expected);
 });

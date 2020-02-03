@@ -6,7 +6,7 @@
     "author": "Pedro Ladaria <pedro.ladaria@gmail.com>",
     "license": "MIT",
     "scripts": {
-        "test": "ava tests",
+        "test": "jest",
         "precommit": "lint-staged"
     },
     "bin": {
@@ -17,9 +17,10 @@
         "glob": "^7.1.2"
     },
     "devDependencies": {
-        "ava": "^3.2.0",
         "eslint": "^6.8.0",
+        "eslint-plugin-jest": "^23.6.0",
         "husky": "^4.2.1",
+        "jest": "^25.1.0",
         "lint-staged": "^10.0.7",
         "prettier": "^1.11.1"
     },
