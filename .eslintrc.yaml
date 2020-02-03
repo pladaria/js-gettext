@@ -1,11 +1,12 @@
 env:
-  node: true
+    node: true
+    jest/globals: true
 extends:
-  - eslint:recommended
+    - eslint:recommended
 parserOptions:
-  ecmaVersion: 6,
-  sourceType: module
-  ecmaFeatures:
-    experimentalObjectRestSpread: true
+    ecmaVersion: 2016
+    sourceType: module
 rules:
-  no-console: off
+    no-console: off
+plugins:
+    - jest

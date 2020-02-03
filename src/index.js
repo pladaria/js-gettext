@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// @ts-check
 const {writeFileSync} = require('fs');
 const argv = require('commander');
 const extractTokens = require('./extract-tokens');
@@ -19,8 +20,7 @@ const parseFormatterOptions = (value = '') =>
 
 let input, output;
 
-argv
-    .version(require('../package').version)
+argv.version(require('../package').version)
     .arguments('<input> <output>')
     .option('-f, --format <value>', 'Output format (pot|json)', /^(pot|json)$/, 'pot')
     .option('-s, --singular <string>', 'Singular translate function', String, 'I18N.translate')

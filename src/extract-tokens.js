@@ -1,18 +1,24 @@
+// @ts-check
 const {readFileSync, statSync} = require('fs');
 const glob = require('glob');
 const {buildFunctionCallRegExp} = require('./regular-expressions');
 const readParameters = require('./read-parameters');
 
+const currentDir = process.cwd();
+
 const addToken = (tokens, filename, line, token, tokenPlural = '') => {
     const key = token;
+    const relativePath = filename.startsWith(currentDir)
+        ? '.' + filename.substr(currentDir.length)
+        : filename;
     if (!tokens[key]) {
         tokens[key] = {
             token: token,
             plural: tokenPlural,
-            positions: [`${filename}:${line}`],
+            positions: [`${relativePath}:${line}`],
         };
     } else {
-        tokens[key].positions.push(`${filename}:${line}`);
+        tokens[key].positions.push(`${relativePath}:${line}`);
         const currentPlural = tokens[key].tokenPlural;
         if (tokenPlural) {
             if (!currentPlural) {

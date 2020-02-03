@@ -1,3 +1,4 @@
+// @ts-check
 /**
  * Simple state machine to read up to `limit` string parameters
  *
