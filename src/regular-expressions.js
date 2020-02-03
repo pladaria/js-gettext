@@ -1,3 +1,4 @@
+// @ts-check
 /**
  * Creates a RegExp that matches a function call in the beginning of the string,
  * including the opening parenthesis

@@ -1,3 +1,4 @@
+// @ts-check
 /**
  * gettext formatter
  */

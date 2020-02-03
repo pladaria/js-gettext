@@ -1,3 +1,4 @@
+// @ts-check
 /**
  * JSON formatter
  */

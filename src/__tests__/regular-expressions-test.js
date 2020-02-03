@@ -1,3 +1,4 @@
+// @ts-check
 const {buildFunctionCallRegExp} = require('../regular-expressions');
 
 test('buildFunctionCallRegExp', () => {

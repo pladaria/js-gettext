@@ -1,3 +1,4 @@
+// @ts-check
 const readParameters = require('../read-parameters');
 
 test('happy case - read one parameter', () => {
